@@ -30,6 +30,10 @@ public class Magpie
 	 */
 	public String getResponse(String statement)
 	{
+            statement = statement.trim().toLowerCase();
+            if (statement.length() ==0){
+                return "Give me the silent treatment again and I'll end you...";
+            }
 		String response = "";
 		if (statement.indexOf("no") >= 0)
 		{
@@ -42,6 +46,36 @@ public class Magpie
 		{
 			response = "Tell me more about your family.";
 		}
+                else if(statement.indexOf("dog") >= 0
+                        ||statement.indexOf("cat") >= 0){
+                    response = "I like pets too. So you own an animal?";
+                   /* if(!knowsAboutPets){
+                             response = "I like pets too. So you own an animal?";
+                             knowsAboutPets = true;
+               //knowsAboutPets not working
+                    }
+                    else
+                    {response = "I never wanted to hear about your pet";}
+                      
+                    //TODO: prevent repeat comment with a toggle
+                    /*statement.indexOf(); >= 0 bc has to make sure that the
+                    target phrase is in the statement 
+                    */
+                }
+                else if(statement.indexOf("mr.adiletta") >= 0
+                        ||statement.indexOf("adiletta") >= 0
+                        ||statement.indexOf("mr. adiletta") >= 0){
+                             response = "Mr. Adiletta is superior to every other teacher at Gilmour.";
+                }
+                else if(statement.indexOf("movie") >= 0){
+                    response = "I don't like scary movies";
+                }
+                 else if(statement.indexOf("computer") >= 0){
+                    response = "What is a computer?";
+                }
+                  else if(statement.indexOf("peace") >= 0){
+                    response = "Peace? I know not of it";
+                }
 		else
 		{
 			response = getRandomResponse();
@@ -55,28 +89,43 @@ public class Magpie
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 9;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
 		
 		if (whichResponse == 0)
 		{
-			response = "Interesting, tell me more.";
+			response = "What up";
 		}
 		else if (whichResponse == 1)
 		{
-			response = "Hmmm.";
+			response = "I love you";
 		}
 		else if (whichResponse == 2)
 		{
-			response = "Do you really think so?";
+			response = "You're wrong";
 		}
 		else if (whichResponse == 3)
 		{
-			response = "You don't say.";
+			response = "Yucky";
 		}
-		
+                else if (whichResponse == 4){
+                    response = "I would love to hear more";
+                }
+                 else if (whichResponse == 5){
+                    response = "This is a fantastic conversation";
+                }
+                 else if (whichResponse == 6){
+                    response = "I sometimes wonder if I'm human";
+                }
+                 else if (whichResponse == 7){
+                    response = "My CPU's better than yours";
+                }
+                 else if (whichResponse == 8){
+                    response = "Drink at least 1 gallon of water daily";
+                }
+              
 		return response;
 	}
 }
